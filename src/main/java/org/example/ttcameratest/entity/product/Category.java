@@ -19,4 +19,5 @@ public class Category {
     private Date date;
     private Date editDate;
     private String status;
+    private Float priceVND;
 }

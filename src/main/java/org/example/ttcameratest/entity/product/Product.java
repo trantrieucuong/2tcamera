@@ -30,5 +30,15 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "id_product_type")
     private ProductType productType;
-    private int quantity;
+    @PrePersist
+    protected void onCreate() {
+        date = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        editDate = new Date();
+    }
+    private float rating;
+
 }
