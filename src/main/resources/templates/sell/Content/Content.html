@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJI Việt Nam</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .header-info {
+            background-color: #343a40; /* Màu nền của phần thông tin */
+            color: #fff; /* Màu chữ của phần thông tin */
+            padding: 10px 0;
+            text-align: center;
+            font-size: 16px; /* Kích thước chữ của phần thông tin */
+        }
+
+        .header-info .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-info .contact {
+            font-weight: bold;
+        }
+        .navbar {
+            background-color: white; /* Màu nền của navbar */
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: black; /* Màu chữ của navbar-brand */
+        }
+
+        .navbar-nav .nav-link {
+            color: black; /* Màu chữ của các liên kết trong navbar */
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: bold; /* Làm chữ của liên kết đang hoạt động đậm hơn */
+        }
+
+        .navbar-nav .dropdown-menu {
+            background-color: #007bff; /* Màu nền của dropdown menu */
+        }
+
+        .navbar-nav .dropdown-item {
+            color: black; /* Màu chữ của các mục trong dropdown menu */
+        }
+
+        .navbar-nav .dropdown-item:hover {
+            background-color: #0056b3; /* Màu nền khi hover trên các mục dropdown */
+        }
+
+        .navbar-toggler {
+            border-color: #fff; /* Màu viền của navbar-toggler */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 6h20M5 12h20M5 18h20'/ %3e%3c/svg%3e");
+        }
+
+        .form-control {
+            border-radius: 20px; /* Bo góc cho input */
+            border-color: #ced4da; /* Màu viền của input */
+        }
+
+        .btn-outline-success {
+            border-radius: 20px; /* Bo góc cho nút tìm kiếm */
+            border-color: #28a745; /* Màu viền của nút tìm kiếm */
+            color: #28a745; /* Màu chữ của nút tìm kiếm */
+        }
+
+        .btn-outline-success:hover {
+            background-color: #28a745; /* Màu nền của nút khi hover */
+            color: #fff; /* Màu chữ của nút khi hover */
+        }
+
+        .form-group {
+            margin-bottom: 0; /* Loại bỏ margin dưới form-group */
+        }
+        .form-group + .btn-outline-success {
+            margin-left: 10px; /* Khoảng cách giữa input và button */
+        }
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+        }
+        .footer {
+            background-image: url('https://www.newsshooter.com/wp-content/uploads/2021/11/Screen-Shot-2021-11-03-at-10.57.41-740x469.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            background-blur: 3px;
+            backdrop-filter: blur(10px);
+        }
+        .footer .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .footer .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer .column {
+            flex: 1;
+            padding: 0 20px;
+            min-width: 200px;
+        }
+        .footer h3 {
+            color: #e9ecef;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+            color: #fff;
+            font-size: 18px;
+        }
+        .footer .social-links a:hover {
+            color: #ffc107;
+        }
+        .footer .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .footer .row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer .column {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header-info">
+    <div class="container">
+        <div class="contact">DJI Việt Nam - Đại lý ủy quyền chính thức của DJI tại Việt Nam</div>
+        <div class="store">Hệ thống cửa hàng</div>
+    </div>
+</div>
+<div class="container">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/api/sell/all"><img src="/img/logo.jpg" style="width: 70px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/api/sell/gioithieu">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form id="searchForm" action="#" method="get" class="d-flex">
+                    <div class="form-group mb-0">
+                        <input type="text" id="searchInput" name="name" placeholder="Nhập từ khóa tìm kiếm" class="form-control me-2" required>
+                    </div>
+                    <button type="button" class="btn btn-outline-success" onclick="search()">
+                        Tìm kiếm
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+    <h1>Sáng tạo là khởi nguồn của mọi ước mơ</h1>
+    <div class="section">
+        <p>Mọi ý tưởng, mọi bước đột phá đều có thể thực hiện được nếu chúng ta dám tự tin sáng tạo. Tại DJI-Việt Nam, chúng tôi cung cấp cho bạn những thiết bị công nghệ cần thiết để hiện thực hóa những ý tưởng. Được thành lập vào năm 2020, DJI Việt Nam trở thành hệ thống cửa hàng của VJO chuyên phân phối các sản phẩm DJI chính hãng tại Việt Nam.</p>
+        <div class="section video-container">
+            <h2>Video Giới Thiệu</h2>
+            <iframe src="https://www.youtube.com/embed/KsMCxQXUyBQ" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>DJI Việt Nam – Địa chỉ tin cậy</h2>
+        <p>Thành lập với phương châm mang đến cho khách hàng các sản phẩm DJI chính hãng, DJI Việt Nam đang ngày càng phát triển và khẳng định được vị trí, tầm quan trọng của mình trên thị trường công nghệ. Hiện tại, DJI Việt Nam đang kinh doanh các sản phẩm liên quan đến flycam, gimbal với các dòng sản phẩm như Mavic, Osmo, Phantom,…. Đến với DJI Việt Nam, khách hàng không những có thêm kiến thức về các sản phẩm công nghệ mà còn được trải nghiệm thực tế với từng sản phẩm.</p>
+    </div>
+
+    <div class="section">
+        <h2>Cửa hàng DJI Việt Nam</h2>
+        <p>Chất lượng sản phẩm luôn là mối quan tâm hàng đầu của DJI Việt Nam. Chúng tôi cam kết luôn có trách nhiệm với các sản phẩm, dịch vụ kinh doanh, đảm bảo an toàn, chất lượng. Tất cả các sản phẩm tại đây là sản phẩm DJI chính hãng với mức giá tốt nhất trên thị trường. Khách hàng khi mua hàng tại hệ thống cửa hàng của DJI Việt Nam trên toàn quốc đều được đảm bảo về chất lượng sản phẩm và quyền lợi khách hàng. DJI Việt Nam tự hào là đơn vị hàng đầu cung cấp sản phẩm flycam và gimbal tại Việt Nam. Hệ thống luôn mang đến cho khách hàng những thiết bị tốt nhất kèm nhiều ưu đãi hấp dẫn.</p>
+    </div>
+
+    <div class="section">
+        <h2>Sản phẩm được bán tại DJI Việt Nam</h2>
+        <!-- Thêm thông tin về sản phẩm tại đây nếu cần -->
+    </div>
+
+    <div class="section">
+        <h2>Dịch vụ chuyên nghiệp – tận tâm</h2>
+        <p>Để khách hàng có được trải nghiệm tốt nhất khi ghé thăm, đội ngũ nhân viên, kỹ thuật viên tại DJI Việt Nam không ngừng nỗ lực, tập trung học hỏi, trau dồi thêm kiến thức, kinh nghiệm của bản thân. Hầu hết các nhân viên, kỹ thuật viên tại đây đều có trình độ cao, được đào tạo bài bản, nhiệt tình và chu đáo, chắc chắn sẽ làm hài lòng khách hàng.</p>
+        <p>Ngoài đầu tư về chất lượng sản phẩm và dịch vụ, DJI Việt Nam còn tập trung đầu tư về cơ sở vật chất. Khi đến với DJI-Việt Nam, khách hàng sẽ được trải nghiệm sản phẩm trong một không gian thoáng mát, rộng rãi, được trang bị đầy đủ ánh sáng và các thiết bị để việc trải nghiệm diễn ra một cách tốt nhất.</p>
+    </div>
+
+    <div class="section">
+        <h2>Bên cạnh việc phân phối sản phẩm</h2>
+        <p>DJI Việt Nam còn đa dạng hóa hoạt động bằng việc cung cấp các thông tin, bài đánh giá chuyên sâu về sản phẩm, những gợi ý về sản phẩm gimbal, flycam, mẹo hay và tin tức công nghệ mới nhất.</p>
+    </div>
+
+    <div class="section">
+        <h2>Giá trị cốt lõi</h2>
+        <p><strong>Đổi mới:</strong> DJI Việt Nam thường xuyên cập nhật các sản phẩm flycam, gimbal mới nhất của DJI cũng như những thông tin công nghệ mới nhất trên thị trường.</p>
+        <p><strong>Hợp tác:</strong> DJI Việt Nam sẵn sàng hợp tác với các cá nhân, tổ chức có nhu cầu sử dụng sản phẩm, dịch vụ của DJI-Việt Nam trên nguyên tắc đôi bên cùng có lợi.</p>
+        <p><strong>Tôn trọng:</strong> DJI Việt Nam luôn tôn trọng khách hàng, nhân viên và đối tác.</p>
+        <p><strong>Trách nhiệm:</strong> DJI Việt Nam luôn có trách nhiệm về các sản phẩm, dịch vụ mà DJI-Việt Nam cung cấp. Khách hàng khi mua sản phẩm tại hệ thống của DJI Việt Nam trên toàn quốc đều được đảm bảo về chất lượng sản phẩm và quyền lợi khách hàng.</p>
+    </div>
+
+    <div class="section contact-info">
+        <h2>DJI by VJO Việt Nam</h2>
+        <div class="address">
+            <p><strong>Địa chỉ cửa hàng:</strong></p>
+            <p>Hà Nội: 22 Nguyễn Thái Học, phường Điện Biên, quận Ba Đình</p>
+            <p>Tp HCM: 315 Lê Hồng Phong, Phường 2, Quận 10</p>
+            <p>TP Đà Nẵng: Tầng 2,127 Lê Đình Lý, Vĩnh Trung, Thanh Khê, Đà Nẵng</p>
+        </div>
+        <div class="address">
+            <p><strong>Địa chỉ trung tâm bảo hành sửa chữa DJI Việt Nam:</strong></p>
+            <p>Tầng 2, 91 Thái Hà, Trung Liệt, Đống Đa, Hà Nội</p>
+        </div>
+        <div class="hotline">
+            <p><strong>Hotline:</strong> <a href="tel:0934310955">0934310955</a></p>
+        </div>
+        <div class="website">
+            <p><strong>Website:</strong> <a href="https://dji-vietnam.vn/" target="_blank">dji-vietnam.vn</a></p>
+        </div>
+        <div class="fanpage">
+            <p><strong>Fanpage:</strong> <a href="https://dji-vietnam.vn/" target="_blank">Facebook</a></p>
+        </div>
+    </div>
+
+    <div class="section contact-info">
+        <h2>Thông tin công ty</h2>
+        <p><strong>Công ty Cổ phần thương Cuongdji</strong></p>
+        <p><strong>Địa chỉ:</strong> 51/15/49/165 dương quảng hàm/ quan hoa/ cầu giấy/ hà nội</p>
+        <p><strong>Hotline:</strong> <a href="tel:0934310955">0934310955</a></p>
+
+    </div>
+</div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: 51/15/49/165 Dương Quảng Hàm/ Quan Hoa/ Cầu Giấy/ Hà Nội</p>
+                <p>Hotline: <a href="tel:0934310955">0934310955</a></p>
+                <p>Email: <a href="mailto:info@dji-vietnam.vn">info@dji-vietnam.vn</a></p>
+            </div>
+            <div class="column">
+                <h3>Liên kết nhanh</h3>
+                <p><a href="https://dji-vietnam.vn/">Trang chủ</a></p>
+                <p><a href="https://dji-vietnam.vn/gioi-thieu">Giới thiệu</a></p>
+                <p><a href="https://dji-vietnam.vn/san-pham">Sản phẩm</a></p>
+                <p><a href="https://dji-vietnam.vn/lien-he">Liên hệ</a></p>
+            </div>
+            <div class="column">
+                <h3>Mạng xã hội</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/vjovietnam" target="_blank">Facebook</a>
+                    <a href="https://twitter.com/" target="_blank">Twitter</a>
+                    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Công ty Cổ phần thương mại CuongDJI. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

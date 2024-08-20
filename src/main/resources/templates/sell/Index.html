@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Listing</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .header-info {
+            background-color: #343a40; /* Màu nền của phần thông tin */
+            color: #fff; /* Màu chữ của phần thông tin */
+            padding: 10px 0;
+            text-align: center;
+            font-size: 16px; /* Kích thước chữ của phần thông tin */
+        }
+
+        .header-info .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-info .contact {
+            font-weight: bold;
+        }
+        .navbar {
+            background-color: white; /* Màu nền của navbar */
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: black; /* Màu chữ của navbar-brand */
+        }
+
+        .navbar-nav .nav-link {
+            color: black; /* Màu chữ của các liên kết trong navbar */
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: bold; /* Làm chữ của liên kết đang hoạt động đậm hơn */
+        }
+
+        .navbar-nav .dropdown-menu {
+            background-color: #007bff; /* Màu nền của dropdown menu */
+        }
+
+        .navbar-nav .dropdown-item {
+            color: black; /* Màu chữ của các mục trong dropdown menu */
+        }
+
+        .navbar-nav .dropdown-item:hover {
+            background-color: #0056b3; /* Màu nền khi hover trên các mục dropdown */
+        }
+
+        .navbar-toggler {
+            border-color: #fff; /* Màu viền của navbar-toggler */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 6h20M5 12h20M5 18h20'/ %3e%3c/svg%3e");
+        }
+
+        .form-control {
+            border-radius: 20px; /* Bo góc cho input */
+            border-color: #ced4da; /* Màu viền của input */
+        }
+
+        .btn-outline-success {
+            border-radius: 20px; /* Bo góc cho nút tìm kiếm */
+            border-color: #28a745; /* Màu viền của nút tìm kiếm */
+            color: #28a745; /* Màu chữ của nút tìm kiếm */
+        }
+
+        .btn-outline-success:hover {
+            background-color: #28a745; /* Màu nền của nút khi hover */
+            color: #fff; /* Màu chữ của nút khi hover */
+        }
+
+        .form-group {
+            margin-bottom: 0; /* Loại bỏ margin dưới form-group */
+        }
+        /* Card */
+        .card {
+            position: relative;
+            border-radius: 10px;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+
+            margin: 0 auto; /* Căn giữa */
+        }
+
+        /* Hover Effect for Card */
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Image Container */
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Image */
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay for Quick View */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            z-index: 1; /* Đảm bảo overlay luôn ở trên cùng */
+        }
+
+        /* Show Overlay on Hover */
+        .card:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Quick View Button */
+        .quick-view {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 0; /* Sát mép dưới */
+        }
+
+        /* Quick View Button Hover Effect */
+        .quick-view:hover {
+            background-color: #0056b3;
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            position: absolute;
+            top: 10px; /* Sát phía trên */
+            left: 10px; /* Sát bên trái */
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            z-index: 1; /* Đảm bảo icon luôn ở trên cùng */
+        }
+
+        /* Cart Icon Hover Effect */
+        .cart-icon:hover {
+            background-color: #0056b3;
+        }
+
+        /* Cart Icon Inner Element */
+        .cart-icon i {
+            margin-right: 5px;
+        }
+
+        /* Rating Stars */
+        .rating {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Full Star */
+        .rating .fa-star {
+            color: #FFD700; /* Màu vàng cho ngôi sao đầy */
+        }
+
+        /* Empty Star */
+        .rating .fa-star-o {
+            color: #E0E0E0; /* Màu xám cho ngôi sao rỗng */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 75vh; /* Chiều cao của banner */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('/img/DJI-Mavic-3-Pro-vs.-Mavic-3-vs.-Mavic-3-Classic-9-scaled.jpg') no-repeat center center;
+            background-size: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ phần tử */
+        }
+
+        .banner-text {
+            font-size: 120px; /* Kích thước chữ lớn hơn */
+            font-weight: 900; /* Đặt font-weight lớn hơn để làm chữ đậm hơn */
+            color: transparent; /* Ẩn màu chữ gốc */
+            text-align: center;
+            position: relative;
+            width: 80%; /* Đảm bảo chữ không quá lớn */
+            height: 80%; /* Đảm bảo chữ không quá cao */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Đảm bảo hình ảnh không tràn ra ngoài chữ */
+        }
+
+        .banner-text::before {
+            content: 'Cuong DJI';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px; /* Kích thước chữ bên trong */
+            font-weight: 900; /* Đặt font-weight lớn hơn để làm chữ đậm hơn */
+            color: transparent; /* Ẩn màu chữ gốc */
+            background: url('/img/DJI-Mavic-3-Pro-vs.-Mavic-3-vs.-Mavic-3-Classic-9-scaled.jpg') no-repeat center center;
+            background-size: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ chữ */
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 1.2;
+            z-index: -1; /* Đặt hình ảnh phía sau chữ */
+            display: flex; /* Căn giữa chữ */
+            justify-content: center; /* Căn giữa chữ theo chiều ngang */
+            align-items: center; /* Căn giữa chữ theo chiều dọc */
+        }
+
+        .banner-text::after {
+            content: 'Cuong DJI';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px; /* Kích thước chữ bên trong */
+            font-weight: 900; /* Đặt font-weight lớn hơn để làm chữ đậm hơn */
+            color: transparent; /* Ẩn màu chữ gốc */
+            background-size: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ chữ */
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 1.2;
+            z-index: 1; /* Đặt hình ảnh phía trước chữ */
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Đường viền chữ rõ hơn */
+            display: flex; /* Căn giữa chữ */
+            justify-content: center; /* Căn giữa chữ theo chiều ngang */
+            align-items: center; /* Căn giữa chữ theo chiều dọc */
+        }
+        .form-group + .btn-outline-success {
+            margin-left: 10px; /* Khoảng cách giữa input và button */
+        }
+        .footer {
+            background-image: url('https://www.newsshooter.com/wp-content/uploads/2021/11/Screen-Shot-2021-11-03-at-10.57.41-740x469.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            background-blur: 3px;
+            backdrop-filter: blur(10px);
+        }
+        .footer .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .footer .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer .column {
+            flex: 1;
+            padding: 0 20px;
+            min-width: 200px;
+        }
+        .footer h3 {
+            color: #e9ecef;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+            color: #fff;
+            font-size: 18px;
+        }
+        .footer .social-links a:hover {
+            color: #ffc107;
+        }
+        .footer .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .footer .row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer .column {
+                margin-bottom: 20px;
+            }
+        }
+        .quick-view {
+            text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+            color: inherit; /* Kế thừa màu chữ của phần tử chứa liên kết */
+            transition: color 0.3s ease; /* Thêm hiệu ứng chuyển màu nếu cần */
+        }
+
+        .quick-view:hover {
+            color: inherit; /* Giữ màu chữ không thay đổi khi hover */
+            /*background-color: transparent; !* Giữ nền trong suốt khi hover *!*/
+        }
+    </style>
+</head>
+<body>
+<div class="header-info">
+    <div class="container">
+        <div class="contact">DJI Việt Nam - Đại lý ủy quyền chính thức của DJI tại Việt Nam</div>
+        <div class="store">Hệ thống cửa hàng</div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/api/sell/all"><img src="/img/logo.jpg" style="width: 70px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/api/sell/gioithieu">Giới Thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form id="searchForm" action="#" method="get" class="d-flex">
+                <div class="form-group mb-0">
+                    <input type="text" id="searchInput" name="name" placeholder="Nhập từ khóa tìm kiếm" class="form-control me-2" required>
+                </div>
+                <button type="button" class="btn btn-outline-success" onclick="search()">
+                    Tìm kiếm
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="banner-container">
+    <div class="banner-text">Cuong DJI</div>
+</div>
+<br>
+<div class="container">
+    <br>
+    <h1>Sản Phẩm New</h1>
+    <br>
+    <div class="row">
+        <!-- Loop through each product detail -->
+        <div class="col-12 col-md-4 mb-4" th:each="productsSell, i : ${productsSell}">
+            <div class="card">
+                <div class="image-container">
+                    <img th:src="@{'/img/' + ${productsSell.image}}" alt="Product Image">
+                    <div class="overlay">
+                        <!-- Cart Icon -->
+                        <div class="cart-icon" th:onclick="'window.location.href=\'/banhang/hoadon/view?hoaDonId=' + ${hoaDonId} + '\''">
+                            <i class="fas fa-shopping-cart">🛒</i>
+                        </div>
+                        <a class="quick-view"
+                           th:href="@{'/api/sell/detail?id=' + ${productsSell.id} + '&nameProduct=' + ${productsSell.nameProduct} }">
+                            Xem nhanh
+                        </a>
+
+
+
+                    </div>
+                </div>
+                <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div class="product-title">
+                        <strong>Tên sản phẩm: </strong>
+                        <a th:href="@{'/api/sell/detail?id=' + ${productsSell.id} + '&nameProduct=' + ${productsSell.nameProduct} }">
+                            <span class="card-title" th:text="${productsSell.nameProduct}">Product Name</span>
+                        </a>
+                    </div>
+                    <div class="product-title">
+                        <strong>Giá: </strong>
+                        <a th:href="@{'/api/sell/detail?id=' + ${productsSell.id}}">
+                            <span class="card-title" th:text="${productsSell.category.priceVND}" style="color: red">priceVND</span>
+                        </a>
+                    </div>
+                    <div class="rating">
+                        <!-- Hiển thị sao đầy -->
+                        <strong>Đánh giá: </strong>
+                        <i class="fa fa-star" th:each="i : ${#numbers.sequence(1, 5)}"
+                           th:classappend="${productsSell.rating >= i ? 'fa-star' : 'fa-star-o'}"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of loop -->
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: 51/15/49/165 Dương Quảng Hàm/ Quan Hoa/ Cầu Giấy/ Hà Nội</p>
+                <p>Hotline: <a href="tel:0934310955">0934310955</a></p>
+                <p>Email: <a href="mailto:info@dji-vietnam.vn">info@dji-vietnam.vn</a></p>
+            </div>
+            <div class="column">
+                <h3>Liên kết nhanh</h3>
+                <p><a href="https://dji-vietnam.vn/">Trang chủ</a></p>
+                <p><a href="https://dji-vietnam.vn/gioi-thieu">Giới thiệu</a></p>
+                <p><a href="https://dji-vietnam.vn/san-pham">Sản phẩm</a></p>
+                <p><a href="https://dji-vietnam.vn/lien-he">Liên hệ</a></p>
+            </div>
+            <div class="column">
+                <h3>Mạng xã hội</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/vjovietnam" target="_blank">Facebook</a>
+                    <a href="https://twitter.com/" target="_blank">Twitter</a>
+                    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Công ty Cổ phần thương mai CuongDJI. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    function search() {
+        var query = document.getElementById('searchInput').value;
+        window.location.href = '/api/sell/search?nameProduct=' + encodeURIComponent(query);
+    }
+</script>
+
+</body>
+</html>
