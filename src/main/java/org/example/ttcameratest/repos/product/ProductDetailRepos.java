@@ -14,5 +14,8 @@ public interface ProductDetailRepos extends JpaRepository<ProductDetailed, Integ
     List<ProductDetailed> findAllProductDetails();
     @Query("select pd from ProductDetailed pd where pd.product.id = :id")
     List<ProductDetailed> findAllProductDetailsByProductId(@Param("id") Integer id);
+    @Query("select pd from ProductDetailed pd where pd.id = :id")
+    ProductDetailed findProductDetailById(@Param("id") Integer id);
+
 
 }

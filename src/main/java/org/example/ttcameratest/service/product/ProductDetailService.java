@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 
 public class ProductDetailService {
     @Autowired
@@ -19,9 +20,21 @@ public class ProductDetailService {
     public List<ProductDetailed> getProductDetails() {
         return productDetailRepos.findAllProductDetails();
     }
-    public List<ProductDetailed> findProductById(int id) {
 
-         return productDetailRepos.findAllProductDetailsByProductId(id);
+    public List<ProductDetailed> findProductById(int id) {
+        return productDetailRepos.findAllProductDetailsByProductId(id);
     }
 
+    public ProductDetailed updateProductDetail(ProductDetailed productDetail) {
+        return productDetailRepos.save(productDetail);
+    }
+
+
+    public ProductDetailed save(ProductDetailed productDetailed) {
+        return productDetailRepos.save(productDetailed);
+    }
+
+    public ProductDetailed findProductDetailById(int id) {
+        return productDetailRepos.findProductDetailById(id);
+    }
 }
