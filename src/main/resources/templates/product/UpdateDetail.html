@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product Detail</title>
+</head>
+<body>
+<h1>Update Product Detail</h1>
+<form action="/api/product/updatedetailproduct" method="post">
+    <input type="hidden" name="id" value="${productDetailed.id}" />
+    <input type="hidden" name="product.id" value="${productDetailed.product.id}" />
+
+    <label for="describe">Describe:</label>
+    <input type="text" id="describe" name="describe" value="${productDetailed.describe}" required />
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" value="${productDetailed.quantity}" required />
+
+    <label for="priceVND">Price (VND):</label>
+    <input type="number" id="priceVND" name="priceVND" value="${productDetailed.priceVND}" required />
+
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>
