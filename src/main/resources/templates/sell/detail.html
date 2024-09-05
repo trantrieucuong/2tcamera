@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/css.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .header-info {
+            background-color: #343a40; /* Màu nền của phần thông tin */
+            color: #fff; /* Màu chữ của phần thông tin */
+            padding: 10px 0;
+            text-align: center;
+            font-size: 16px; /* Kích thước chữ của phần thông tin */
+        }
+
+        .header-info .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-info .contact {
+            font-weight: bold;
+        }
+        .navbar {
+            background-color: white; /* Màu nền của navbar */
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: black; /* Màu chữ của navbar-brand */
+        }
+
+        .navbar-nav .nav-link {
+            color: black; /* Màu chữ của các liên kết trong navbar */
+        }
+
+        .navbar-nav .nav-link.active {
+            font-weight: bold; /* Làm chữ của liên kết đang hoạt động đậm hơn */
+        }
+
+        .navbar-nav .dropdown-menu {
+            background-color: #007bff; /* Màu nền của dropdown menu */
+        }
+
+        .navbar-nav .dropdown-item {
+            color: black; /* Màu chữ của các mục trong dropdown menu */
+        }
+
+        .navbar-nav .dropdown-item:hover {
+            background-color: #0056b3; /* Màu nền khi hover trên các mục dropdown */
+        }
+
+        .navbar-toggler {
+            border-color: #fff; /* Màu viền của navbar-toggler */
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 6h20M5 12h20M5 18h20'/ %3e%3c/svg%3e");
+        }
+
+        .form-control {
+            border-radius: 20px; /* Bo góc cho input */
+            border-color: #ced4da; /* Màu viền của input */
+        }
+
+        .btn-outline-success {
+            border-radius: 20px; /* Bo góc cho nút tìm kiếm */
+            border-color: #28a745; /* Màu viền của nút tìm kiếm */
+            color: #28a745; /* Màu chữ của nút tìm kiếm */
+        }
+
+        .btn-outline-success:hover {
+            background-color: #28a745; /* Màu nền của nút khi hover */
+            color: #fff; /* Màu chữ của nút khi hover */
+        }
+
+        .form-group {
+            margin-bottom: 0; /* Loại bỏ margin dưới form-group */
+        }
+        .form-group + .btn-outline-success {
+            margin-left: 10px; /* Khoảng cách giữa input và button */
+        }
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+        }
+        .footer {
+            background-image: url('https://www.newsshooter.com/wp-content/uploads/2021/11/Screen-Shot-2021-11-03-at-10.57.41-740x469.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            background-blur: 3px;
+            backdrop-filter: blur(10px);
+        }
+        .footer .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .footer .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer .column {
+            flex: 1;
+            padding: 0 20px;
+            min-width: 200px;
+        }
+        .footer h3 {
+            color: #e9ecef;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        .footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+            color: #fff;
+            font-size: 18px;
+        }
+        .footer .social-links a:hover {
+            color: #ffc107;
+        }
+        .footer .copyright {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .footer .row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer .column {
+                margin-bottom: 20px;
+            }
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Full Star */
+        .rating .fa-star {
+            color: #FFD700; /* Màu vàng cho ngôi sao đầy */
+        }
+
+        /* Empty Star */
+        .rating .fa-star-o {
+            color: #E0E0E0; /* Màu xám cho ngôi sao rỗng */
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to the next line if needed */
+            gap: 10px; /* Adjust the gap between items as needed */
+        }
+
+        .product-item {
+            flex: 1; /* Makes items flexible to fit available space */
+            min-width: 150px;
+            min-height: 30px;/* Adjust the minimum width of items */
+            text-align: center; /* Centers the text inside the item */
+            border: 1px solid #ccc; /* Optional: Adds a border around items */
+            padding: 10px; /* Optional: Adds padding inside items */
+            border-radius: 20px;
+        }
+        .product-container a {
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit the text color */
+        }
+
+        .product-container a:hover, .product-container a:focus, .product-container a:active {
+            text-decoration: none; /* Prevent underline or other styles on hover/focus/active */
+            color: inherit; /* Keep the text color consistent */
+        }
+        /* Container for the images */
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        /* Ensure the main image fills its container */
+        .main-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Flex container for additional images */
+        /* Container for the images */
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        /* Main product image styling */
+        .main-image img {
+            width: 100%;
+            height: 500px; /* Set a fixed height */
+            object-fit: cover; /* Ensure the image covers the area */
+        }
+
+        /* Flex container for additional images */
+        .additional-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Adjust spacing between thumbnails */
+        }
+
+        .thumbnail {
+            flex: 1 1 calc(25% - 10px); /* Adjust percentage based on the number of thumbnails you want in a row */
+            max-width: 200px; /* Set a maximum width for thumbnails */
+            height: 200px; /* Set a fixed height for thumbnails */
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%; /* Ensure the image fills its container */
+            object-fit: cover; /* Ensure the image covers the area */
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="header-info">
+    <div class="container">
+        <div class="contact">DJI Việt Nam - Đại lý ủy quyền chính thức của DJI tại Việt Nam</div>
+        <div class="store">Hệ thống cửa hàng</div>
+    </div>
+</div>
+<div class="container">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/api/sell/all"><img src="/img/logo.jpg" style="width: 70px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/api/sell/gioithieu">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form id="searchForm" action="#" method="get" class="d-flex">
+                    <div class="form-group mb-0 d-flex position-relative">
+                        <input type="text" id="searchInput" name="name" placeholder="Tìm kiếm" class="form-control me-0" required>
+                        <button type="submit" class="btn btn-primary position-absolute end-0"  style="height: 100%; padding: 0 1rem;background-color: white;">🔎</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container" th:each="productDetaileds, i : ${productDetaileds}">
+    <div class="row mt-4">
+        <!-- Phần ảnh sản phẩm -->
+        <div class="col-md-6 d-flex flex-column">
+            <!-- Main Product Image -->
+            <div class="main-image mb-3">
+                <img th:src="@{'/img/' + ${productDetaileds.product.image}}" alt="Main Image Description">
+            </div>
+
+            <!-- Thumbnail Images -->
+            <div class="additional-images d-flex flex-wrap">
+                <th:block th:each="img : ${imagess}">
+                    <div class="thumbnail">
+                        <img th:src="@{'/img/' + ${img.img}}" alt="Thumbnail Image Description">
+                    </div>
+                </th:block>
+            </div>
+        </div>
+
+
+
+        <!-- Phần thông tin sản phẩm -->
+        <div class="col-md-6 d-flex align-items-start" style="margin-top: 0;">
+            <div>
+
+                <strong style="font-size: 50px">FlyCam:</strong>
+                <span th:text="${productDetaileds.product.nameProduct}" style="font-size: 50px"></span>
+
+                <br>
+                <div class="rating">
+                    <!-- Hiển thị sao đầy -->
+                    <strong>Đánh giá: </strong>
+                    <i class="fa fa-star" th:each="i : ${#numbers.sequence(1, 5)}"
+                       th:classappend="${productDetaileds.product.rating>= i ? 'fa-star' : 'fa-star-o'}"></i>
+                </div>
+                <strong>Mô tả:</strong>
+                <p th:text="${productDetaileds.describe}"></p>
+                <strong>Giá:</strong>
+                <span th:text="${#numbers.formatInteger((productDetaileds.priceVND ?: 0) + (productDetaileds.product.category.priceVND ?: 0), 0)} + ' VND'" style="color: red" id="totalAmount" ></span>
+                <div class="product-container">
+                    <div th:each="image : ${nameProducts}">
+                        <a th:href="@{'/api/sell/detail?id=' + ${image.id} + '&nameProduct=' + ${image.nameProduct} }">
+                            <div class="product-item">
+                                <p th:text="${image.nameProduct}"></p>
+                                <p th:text="${image.category.priceVND} + 'VND'" style="color: red"></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <br><br>
+                <!-- Nút thanh toán -->
+
+                <a id="paymentButton" class="btn btn-primary btn-lg" role="button">Thanh toán</a>
+                <input type="hidden" id="productDetailedId" th:value="${productDetaileds.id}">
+                <input type="hidden" id="productId" th:value="${productDetaileds.product.id}">
+
+                <br><br>
+                <!-- Payment Button -->
+
+
+                <script>
+                    document.getElementById('paymentButton').addEventListener('click', function () {
+                        // Retrieve the IDs
+                        const productDetailedId = document.getElementById('productDetailedId').value;
+                        const productId = document.getElementById('productId').value;
+
+                        // Data for the bill
+                        const billData = {
+                            status: "Pending"
+                        };
+
+                        // Create the bill first
+                        fetch('/api/sell/addbill', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(billData)
+                        })
+                            .then(response => response.json())
+                            .then(bill => {
+                                const billId = bill.id;
+
+                                // Data for the cart with the retrieved IDs
+                                const cartData = {
+                                    productDetailed: { id: productDetailedId },
+                                    bill: { id: billId },
+                                    status: "Pending",
+
+                                    priceVND: parseFloat(document.getElementById('totalAmount').textContent.replace(/[^0-9.-]+/g, "")), // Get total price dynamically
+                                    product: { id: productId }
+                                };
+
+                                // Add the cart data
+                                fetch('/api/sell/addcart', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(cartData)
+                                })
+                                    .then(() => {
+                                        // Redirect to payment gateway with the required information
+                                        window.location.href = `/api/payment/create_payment?amount=${cartData.priceVND}&id=${billId}`;
+                                    })
+                                    .catch(error => {
+                                        console.error('Error while adding to cart:', error);
+                                    });
+                            })
+                            .catch(error => {
+                                console.error('Error while creating the bill:', error);
+                            });
+                    });
+                </script>
+
+                <br><br>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<br>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: 51/15/49/165 Dương Quảng Hàm/ Quan Hoa/ Cầu Giấy/ Hà Nội</p>
+                <p>Hotline: <a href="tel:0934310955">0934310955</a></p>
+                <p>Email: <a href="mailto:info@dji-vietnam.vn">info@dji-vietnam.vn</a></p>
+            </div>
+            <div class="column">
+                <h3>Liên kết nhanh</h3>
+                <p><a href="https://dji-vietnam.vn/">Trang chủ</a></p>
+                <p><a href="https://dji-vietnam.vn/gioi-thieu">Giới thiệu</a></p>
+                <p><a href="https://dji-vietnam.vn/san-pham">Sản phẩm</a></p>
+                <p><a href="https://dji-vietnam.vn/lien-he">Liên hệ</a></p>
+            </div>
+            <div class="column">
+                <h3>Mạng xã hội</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/vjovietnam" target="_blank">Facebook</a>
+                    <a href="https://twitter.com/" target="_blank">Twitter</a>
+                    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Công ty Cổ phần thương mại CuongDJI. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
